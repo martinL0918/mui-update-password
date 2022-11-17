@@ -1,23 +1,68 @@
-import logo from './logo.svg';
+import{useState} from 'react';
+import { Button, Typography, Grid, TextField, Icon, IconButton } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [isResettingPassword, setIsResettingPassword] = useState(false)
+
+  function handleClick() {
+    setIsResettingPassword(!isResettingPassword)
+  }
+
+  return (<div>
+      <Grid container spacing={2}>
+        {/* Username */}
+        <Grid item xs={2} display="flex" alignItems="center">
+          <Typography>username</Typography >
+        </Grid>
+        <Grid item xs={10}>
+         <TextField></TextField>
+        </Grid>
+      {!isResettingPassword ?
+        <>
+          {/* Modify */}
+          <Grid item xs={2} display="flex" alignItems="center">
+            <Typography>Reset password</Typography >
+          </Grid>
+          <Grid item xs={10}>
+          <IconButton onClick={handleClick}>
+            <EditIcon />
+            <Typography>Modify</Typography>
+          </IconButton>
+          </Grid>
+        </>  
+      : 
+        <>
+            <Grid item xs={2} display="flex" alignItems="center">
+            <Typography>Old Password</Typography >
+            </Grid>
+            <Grid item xs={10}>
+            <TextField></TextField>
+            </Grid>
+            {/*Old Password */}
+            <Grid item xs={2} display="flex" alignItems="center">
+            <Typography>New Password</Typography >
+            </Grid>
+            <Grid item xs={10}>
+            <TextField></TextField>
+            </Grid>
+            {/*Old Password */}
+            <Grid item xs={2} display="flex" alignItems="center">
+            <Typography>New Password</Typography >
+            </Grid>
+            <Grid item xs={10}>
+            <TextField></TextField>
+            </Grid>
+            {/*Confirm */}
+            <Grid item xs={2} display="flex" alignItems="center">
+            </Grid>
+            <Grid item xs={10}>
+            <Button variant="contained" onClick={handleClick}>Confirm</Button>
+            </Grid>
+        </>
+    }
+      </Grid>
     </div>
   );
 }
