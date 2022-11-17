@@ -2,6 +2,7 @@ import{useState} from 'react';
 import { Button, Typography, Grid, TextField, Icon, IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit';
 import './App.css';
+import { Box } from '@mui/system';
 
 function App() {
   const [isResettingPassword, setIsResettingPassword] = useState(false)
@@ -10,7 +11,7 @@ function App() {
     setIsResettingPassword(!isResettingPassword)
   }
 
-  return (<div>
+  return (<Box>
       <Grid container spacing={2}>
         {/* Username */}
         <Grid item xs={2} display="flex" alignItems="center">
@@ -63,7 +64,7 @@ function App() {
         </>
     }
       </Grid>
-    </div>
+    </Box>
   );
 }
 
